@@ -1982,7 +1982,15 @@ function doTask(id) {
   }
 
   const link = task.action === "invite" ? getReferralLink() : task.url;
-  if (tg?.openTelegramLink && link.includes("t.me")) tg.openTelegramLink(link);
+
+  if (task.action === "invite") {
+    // Реферал — відкриваємо нативний діалог "Поділитися" (список чатів/контактів),
+    // а не сам чат бота. Посилання підставляється в повідомлення автоматично.
+    const shareText = "🎓 Приєднуйся! Знижки, бонуси та ігри в застосунку dyplomna.com";
+    const shareUrl = "https://t.me/share/url?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(shareText);
+    if (tg?.openTelegramLink) tg.openTelegramLink(shareUrl);
+    else window.open(shareUrl, "_blank");
+  } else if (tg?.openTelegramLink && link.includes("t.me")) tg.openTelegramLink(link);
   else if (tg?.openLink) tg.openLink(link);
   else window.open(link, "_blank");
 
