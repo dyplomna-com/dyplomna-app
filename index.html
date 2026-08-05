@@ -1765,7 +1765,7 @@ function buySpinWithStars() {
   fetch(BUY_STARS_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ telegram_user_id: String(uid), stars: STARS_SPIN_COST, crystals: SPIN_COST })
+    body: JSON.stringify({ telegram_user_id: String(uid), stars: STARS_SPIN_COST, crystals: SPIN_COST, lang })
   }).catch(() => {});
   // Рахунок прийде окремим повідомленням у сам бот — інформуємо про це людину одразу.
   (tg?.showAlert ? tg.showAlert.bind(tg) : alert)(t("stars_invoice_sent"));
