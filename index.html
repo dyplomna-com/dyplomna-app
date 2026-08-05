@@ -1909,7 +1909,7 @@ function applyPrize(prize) {
 
 // ⚠️ LOG_PRIZE_URL — n8n-webhook, що фіксує виграш у Google Sheets (захист від шахрайства:
 // менеджер звіряє заявку з кошика саме з цим логом перед видачею безкоштовної послуги).
-const LOG_PRIZE_URL = "https://YOUR_N8N_DOMAIN/webhook/log-prize";
+const LOG_PRIZE_URL = "https://irened.app.n8n.cloud/webhook/log-prize";
 function claimPrize(prize) {
   const pid = prize.productId;
   cart[pid] = (cart[pid] || 0) + 1;
